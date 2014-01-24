@@ -93,6 +93,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Library\ZhihuAPI\Models\ZHMAuthor.cs" />
+    <Compile Include="Library\ZhihuAPI\Models\ZHMFeed.cs" />
+    <Compile Include="Library\ZhihuAPI\Models\ZHMQuestion.cs" />
+    <Compile Include="Library\ZhihuAPI\Models\ZHMTarget.cs" />
+    <Compile Include="Library\ZhihuAPI\ZHTimeline.cs" />
     <Compile Include="Library\ZhihuAPI\ZHAccount.cs" />
     <Compile Include="Library\ZhihuAPI\ZhihuAPI.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -156,11 +161,6 @@
     </Content>
     <Content Include="Images\ZHBackground.png" />
     <Content Include="Images\ZHStartPageLogo.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -184,6 +184,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Toolkit.Content\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

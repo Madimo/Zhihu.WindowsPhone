@@ -12,16 +12,16 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0">
 
-    <!--LayoutRoot 是包含所有页面内容的根网格-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/ZHBackground.png"/>
+        </Grid.Background>
 
-        <!--枢轴控件-->
-        <phone:Pivot Title="我的应用程序">
-            <!--枢轴项一-->
-            <phone:PivotItem Header="first">
-                <!--具有文字环绕的双线列表-->
+        <phone:Pivot Title="知乎 - 发现更大的世界">
+            <phone:PivotItem Header="最新动态">
                 <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
@@ -34,17 +34,15 @@
                 </phone:LongListSelector>
             </phone:PivotItem>
 
-            <!--枢轴项二-->
-            <phone:PivotItem Header="second">
-                <!--无文字环绕的双线列表-->
+            <phone:PivotItem Header="热门回答">
                 <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
                     <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="0,0,0,17">
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="NoWrap" Margin="12,0,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Text="{Binding LineThree}" TextWrapping="NoWrap" Margin="12,-6,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                </StackPanel>
-                            </DataTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,17">
+                                <TextBlock Text="{Binding LineOne}" TextWrapping="NoWrap" Margin="12,0,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                <TextBlock Text="{Binding LineThree}" TextWrapping="NoWrap" Margin="12,-6,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
                 </phone:LongListSelector>
             </phone:PivotItem>

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO.IsolatedStorage;
-using Newtonsoft.Json.Linq;
-using System.Net;
-using System.IO;
 
 namespace Zhihu.Library.ZhihuAPI
 {
@@ -88,7 +84,8 @@ namespace Zhihu.Library.ZhihuAPI
                 httpWebRequest.ContentType = "application/x-www-form-urlencoded; charset=utf-8";
                 httpWebRequest.Headers[HttpRequestHeader.AcceptEncoding] = "gzip, deflate";
                 httpWebRequest.Headers[HttpRequestHeader.Connection]     = "Keep-Alive";
-                httpWebRequest.Headers[HttpRequestHeader.Authorization]  = "Basic NGJjODk5ZjI2OTVmNDE3ZWI3MzNmM2QyMWE3YmUwOmQxNzlhMWUxMWYyMzQ3YTQ4YzdmOTI4ZDM1NDYyMQ==";
+                httpWebRequest.Headers[HttpRequestHeader.Authorization]  
+                    = "Basic NGJjODk5ZjI2OTVmNDE3ZWI3MzNmM2QyMWE3YmUwOmQxNzlhMWUxMWYyMzQ3YTQ4YzdmOTI4ZDM1NDYyMQ==";
                 httpWebRequest.Headers["XAPIVERSION"] = "3.0";
                 httpWebRequest.Headers["XAPPVERSION"] = "2.1.0";
                 using (Stream stream = await httpWebRequest.GetRequestStreamAsync())
