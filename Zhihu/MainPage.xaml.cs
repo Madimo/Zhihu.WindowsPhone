@@ -18,7 +18,11 @@ namespace Zhihu
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        ZHTimeline timeline;
+        ZHTimeline timeline     = new ZHTimeline();
+        ZHHotAnswers hotAnswers = new ZHHotAnswers();
+        bool isFirstLoadHotAnswers = true;
+        bool isLoadingTimeline     = false;
+        bool isLoadingHotAnswers   = false;
 
         // 构造函数
         public MainPage()
@@ -27,9 +31,6 @@ namespace Zhihu
 
             // 将 listbox 控件的数据上下文设置为示例数据
             DataContext = App.ViewModel;
-
-            // 全局变量初始化
-            timeline = new ZHTimeline();
         }
 
         // 为 ViewModel 项加载数据
@@ -47,14 +48,17 @@ namespace Zhihu
             thread.Start(true);
         }
 
+        #region 加载最新动态
         private async void LoadTimeline(object isLoadFirstPage)
         {
             try
             {
+                isLoadingTimeline = true;
                 this.Dispatcher.BeginInvoke(delegate()
                 {
                     TimelineProgressBar.Visibility = System.Windows.Visibility.Visible;
                 });
+
                 if ((bool)isLoadFirstPage)
                 {
                     await timeline.GetFirstPage();
@@ -67,6 +71,7 @@ namespace Zhihu
                 {
                     await timeline.GetNextPage();
                 }
+
                 foreach (ZHMFeed item in timeline.timeline)
                 {
                     ViewModels.TimelineViewModel tvm = new ViewModels.TimelineViewModel();
@@ -121,22 +126,84 @@ namespace Zhihu
             }
             finally
             {
+                isLoadingTimeline = false;
                 this.Dispatcher.BeginInvoke(delegate()
                 {
                     TimelineProgressBar.Visibility = System.Windows.Visibility.Collapsed;
                 });
             }
         }
+        #endregion
+
+        #region 加载热门回答
+        private async void LoadHotAnswers(object isLoadFirstPage)
+        {
+            try
+            {
+                isLoadingHotAnswers = true;
+                this.Dispatcher.BeginInvoke(delegate()
+                {
+                    HotAnswersProgressBar.Visibility = System.Windows.Visibility.Visible;
+                });
+
+                if ((bool)isLoadFirstPage)
+                {
+                    await hotAnswers.GetFirstPage();
+                    this.Dispatcher.BeginInvoke(delegate()
+                    {
+                        App.ViewModel.hotAnswers.Clear();
+                    });
+                }
+                else
+                {
+                    await hotAnswers.GetNextPage();
+                }
+
+                foreach (ZHMAnswer item in hotAnswers.hotAnswers)
+                {
+                    ViewModels.HotAnswersViewModel havm = new ViewModels.HotAnswersViewModel();
+                    havm.questionTitle = item.question.title;
+                    havm.excerpt       = item.excerpt;
+                    havm.voteupCount   = item.voteupCount;
+                    havm.hotAnswer     = item;
+                    this.Dispatcher.BeginInvoke(delegate()
+                    {
+                        App.ViewModel.hotAnswers.Add(havm);
+                    });
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                isFirstLoadHotAnswers = false;
+                isLoadingHotAnswers   = false;
+                this.Dispatcher.BeginInvoke(delegate()
+                {
+                    HotAnswersProgressBar.Visibility = System.Windows.Visibility.Collapsed;
+                });
+            }
+        }
+        #endregion
 
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch ((sender as Pivot).SelectedIndex)
             {
+                // 最新动态
                 case 0:
                     ApplicationBar = (ApplicationBar)Resources["AppBar0"];
                     break;
+                // 热门回答
                 case 1:
                     ApplicationBar = (ApplicationBar)Resources["AppBar1"];
+                    if (isFirstLoadHotAnswers && !isLoadingHotAnswers)
+                    {
+                        Thread thread = new Thread(LoadHotAnswers);
+                        thread.Start(true);
+                    }
                     break;
             }
         }

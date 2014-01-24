@@ -10,4 +10,11 @@
         <vm:TimelineViewModel showName="王子亭 赞同该回答" showTitle="有个朋友手机丢了，捡到手机的那家伙居然把自己的联系人数据传到了..." showContent="所谓与手机绑定，也是绑定号码而不是手机本身吧？ 都找到这么专业又冷门的地方来提问了，却解决不掉修改个密..." visibility="Visible" showVoteupCount="10240"/>
     </vm:MainViewModel.timeline>
 
+    <vm:MainViewModel.hotAnswers>
+        <vm:HotAnswersViewModel voteupCount="1024" questionTitle="相对于人体构造的复杂程度来说，现代西方医学是否处于野蛮的原始..." excerpt="谢谢邀请。先从哲学高度点一下：用不可知论来看待医学，往往给出似是而非的提问和答案。然后回到正题，人是精密的，医学作为对象是人的一种科学，其严谨、..."/>
+        <vm:HotAnswersViewModel voteupCount="10240" questionTitle="如果乔丹退役后的 NBA 没有允许联防和取消 Handcheck，那么 21..." excerpt="谢邀。不设联防=不限制长人和巨星的统治性。不handcheck=不放任运球突破型后卫撤欢。以下纯属胡扯想象。2001年夏，联盟本拟放开联防，但终于没实行。于是：200..."/>
+        <vm:HotAnswersViewModel voteupCount="102" questionTitle="请问做好的ui界面怎么做成45度角展示？例如下图" excerpt="谢邀。这个问题很好，虽然很简单，但是非常实用。你当然可以选择导入3Ds MAX来变换角度，不过这样实在是太麻烦了，我告诉大家一个直接用PS来制作的方法。我现..."/>
+        <vm:HotAnswersViewModel voteupCount="0" questionTitle="如何拒绝孩子买 iPad 的要求？" excerpt="从小我要求着我爸干啥，他都让我写申请打报告，列可行性计划。\n这个过程中，不是特别想要的，我懒得想必要性，懒得动笔。\n特别想要的，想一下必要性，有时自己..."/>
+    </vm:MainViewModel.hotAnswers>
+
 </vm:MainViewModel>

@@ -52,7 +52,33 @@
             </phone:PivotItem>
 
             <phone:PivotItem Header="热门回答">
-
+                <Grid>
+                    <phone:LongListSelector Name="LongListSelector_HotAnswers" Margin="-5,0,-5,0" ScrollViewer.ManipulationMode="Control" ItemsSource="{Binding hotAnswers}">
+                        <phone:LongListSelector.ListHeader>
+                            <StackPanel/>
+                        </phone:LongListSelector.ListHeader>
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="2,0,0,0">
+                                    <StackPanel Margin="10,0,10,20">
+                                        <TextBlock Text="{Binding questionTitle}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}" Margin="0"/>
+                                        <Grid Margin="0,0,0,0">
+                                            <Border Margin="0,38,398,37" Height="30" BorderBrush="#FF2B75E0" Opacity="0.5" BorderThickness="1,1,1,1"/>
+                                            <TextBlock Text="{Binding voteupCount}" Margin="0,38,398,37" Height="30" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding excerpt}" Margin="55,5,0,0" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" FontSize="{StaticResource PhoneFontSizeSmall}"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                        <phone:LongListSelector.ListFooter>
+                            <StackPanel>
+                                <ProgressBar Name="HotAnswersProgressBar" Opacity="0.5" Foreground="#FF0037FF" IsIndeterminate="True" Visibility="Collapsed"/>
+                                <StackPanel Height="100"/>
+                            </StackPanel>
+                        </phone:LongListSelector.ListFooter>
+                    </phone:LongListSelector>
+                </Grid>
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>

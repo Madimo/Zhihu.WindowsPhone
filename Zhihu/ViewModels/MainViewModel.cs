@@ -9,13 +9,15 @@ namespace Zhihu.ViewModels
     {
         public MainViewModel()
         {
-            this.timeline = new ObservableCollection<TimelineViewModel>();
+            this.timeline   = new ObservableCollection<TimelineViewModel>();
+            this.hotAnswers = new ObservableCollection<HotAnswersViewModel>();
         }
 
         /// <summary>
         /// ItemViewModel 对象的集合。
         /// </summary>
-        public ObservableCollection<TimelineViewModel> timeline { get; private set; }
+        public ObservableCollection<TimelineViewModel>   timeline   { get; private set; }
+        public ObservableCollection<HotAnswersViewModel> hotAnswers { get; private set; }
 
         /// <summary>
         /// 返回本地化字符串的示例属性

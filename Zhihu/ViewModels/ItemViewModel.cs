@@ -111,4 +111,70 @@ namespace Zhihu.ViewModels
         }
     }
 
+    public class HotAnswersViewModel : INotifyPropertyChanged
+    {
+        private string _questionTitle;
+        public string questionTitle
+        {
+            get
+            {
+                return _questionTitle;
+            }
+            set
+            {
+                if (value != _questionTitle)
+                {
+                    _questionTitle = value;
+                    NotifyPropertyChanged("questionTitle");
+                }
+            }
+        }
+
+        private string _excerpt;
+        public string excerpt
+        {
+            get
+            {
+                return _excerpt;
+            }
+            set
+            {
+                if (value != _excerpt)
+                {
+                    _excerpt = value;
+                    NotifyPropertyChanged("excerpt");
+                }
+            }
+        }
+
+        private int _voteupCount;
+        public int voteupCount
+        {
+            get
+            {
+                return _voteupCount;
+            }
+            set
+            {
+                if (value != _voteupCount)
+                {
+                    _voteupCount = value;
+                    NotifyPropertyChanged("voteupCount");
+                }
+            }
+        }
+
+        public ZHMAnswer hotAnswer = new ZHMAnswer();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (null != handler)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
 }
