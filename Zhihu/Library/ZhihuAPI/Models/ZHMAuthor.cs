@@ -2,7 +2,7 @@
 
 namespace Zhihu.Library.ZhihuAPI.Models
 {
-    class ZHMAuthor
+    public class ZHMAuthor
     {
         public string headline;
         public string avatarUrl;

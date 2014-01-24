@@ -2,8 +2,15 @@
 
 namespace Zhihu.Library.ZhihuAPI.Models
 {
-    class ZHMTarget
-    {
+
+
+    public class ZHMTarget
+    {    
+        public const string ZHMTARGET_TYPE_ANSWER_CREATE   = "ANSWER_CREATE";
+        public const string ZHMTARGET_TYPE_ANSWER_VOTE_UP  = "ANSWER_VOTE_UP";
+        public const string ZHMTARGET_TYPE_QUESTION_FOLLOW = "QUESTION_FOLLOW";
+        public const string ZHMTARGET_TYPE_QUESTION_CREATE = "QUESTION_CREATE";
+
         public ZHMAuthor author = new ZHMAuthor();
         public ZHMQuestion question = new ZHMQuestion();
         public string url;

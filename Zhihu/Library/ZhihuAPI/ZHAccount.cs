@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zhihu.Library.ZhihuAPI
 {
-    class ZHAccount : ZhihuAPI
+    public class ZHAccount : ZhihuAPI
     {
         public async Task<bool> Login(string username, string password)
         {

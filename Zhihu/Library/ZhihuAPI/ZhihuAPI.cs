@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Zhihu.Library.ZhihuAPI
 {
-    class ZhihuAPI
+    public class ZhihuAPI
     {
         protected static string accessToken;
         protected static string tokenType;

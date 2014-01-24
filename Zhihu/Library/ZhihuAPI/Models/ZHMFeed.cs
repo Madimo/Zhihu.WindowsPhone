@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Zhihu.Library.ZhihuAPI.Models
 {
-    class ZHMFeed
+    public class ZHMFeed
     {
         public List<ZHMAuthor> actors = new List<ZHMAuthor>();
         public ZHMTarget target = new ZHMTarget();

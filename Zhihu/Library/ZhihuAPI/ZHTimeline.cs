@@ -6,7 +6,7 @@ using Zhihu.Library.ZhihuAPI.Models;
 
 namespace Zhihu.Library.ZhihuAPI
 {
-    class ZHTimeline : ZhihuAPI
+    public class ZHTimeline : ZhihuAPI
     {
         private string nextUrl;
         private string previousUrl;

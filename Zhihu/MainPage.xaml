@@ -13,40 +13,67 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True"
-    shell:SystemTray.Opacity="0">
+    shell:SystemTray.Opacity="0"
+    Loaded="PhoneApplicationPage_Loaded">
 
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/ZHBackground.png"/>
         </Grid.Background>
 
-        <phone:Pivot Title="知乎 - 发现更大的世界">
+        <phone:Pivot Title="知乎 - 发现更大的世界" SelectionChanged="Pivot_SelectionChanged">
             <phone:PivotItem Header="最新动态">
-                <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0,0,0,17">
-                                <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                <Grid>
+                    <phone:LongListSelector Name="LongListSelector_Timeline" Margin="-5,0,-5,0" ItemsSource="{Binding timeline}">
+                        <phone:LongListSelector.ListHeader>
+                            <StackPanel/>
+                        </phone:LongListSelector.ListHeader>
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,20">
+                                    <TextBlock Text="{Binding showName}" TextWrapping="Wrap" Margin="10,0,0,0" Style="{StaticResource PhoneTextSubtleStyle}" FontSize="{StaticResource PhoneFontSizeSmall}" />
+                                    <TextBlock Text="{Binding showTitle}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                                    <Grid Margin="0,0,0,0">
+                                        <Border Margin="10,25,382,25" Height="30" Visibility="{Binding visibility}" BorderBrush="#FF2B75E0" Opacity="0.5" BorderThickness="1,1,1,1"/>
+                                        <TextBlock Text="{Binding showVoteupCount}" Visibility="{Binding visibility}" Margin="0,0,370,0" Height="30" TextAlignment="Center"/>
+                                        <TextBlock Text="{Binding showContent}" Visibility="{Binding visibility}" TextWrapping="Wrap" Width="355" Margin="55,5,0,0" Style="{StaticResource PhoneTextSubtleStyle}" FontSize="{StaticResource PhoneFontSizeSmall}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                        <phone:LongListSelector.ListFooter>
+                            <StackPanel>
+                                <ProgressBar Name="TimelineProgressBar" Opacity="0.5" Foreground="#FF0037FF" IsIndeterminate="True" Visibility="Collapsed"/>
+                                <StackPanel Height="100"/>
                             </StackPanel>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
+                        </phone:LongListSelector.ListFooter>
+                    </phone:LongListSelector>
+                </Grid>
             </phone:PivotItem>
 
             <phone:PivotItem Header="热门回答">
-                <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0,0,0,17">
-                                <TextBlock Text="{Binding LineOne}" TextWrapping="NoWrap" Margin="12,0,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                <TextBlock Text="{Binding LineThree}" TextWrapping="NoWrap" Margin="12,-6,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
+
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>
+
+    <phone:PhoneApplicationPage.Resources>
+        <shell:ApplicationBar x:Key="AppBar0" Opacity="0.5" BackgroundColor="#FF0097FF">
+            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.refresh.png" Text="刷新"/>
+            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.edit.png" Text="提问"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="设置"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+
+        <shell:ApplicationBar x:Key="AppBar1" Opacity="0.5" BackgroundColor="#FF0097FF">
+            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.shuffle.png" Text="随便看看"/>
+            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.refresh.png" Text="刷新"/>
+            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.search.png" Text="搜索"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="设置"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.Resources>
 
 </phone:PhoneApplicationPage>

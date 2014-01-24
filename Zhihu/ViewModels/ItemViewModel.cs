@@ -7,73 +7,98 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using Zhihu.Library.ZhihuAPI.Models;
 
 namespace Zhihu.ViewModels
 {
-    public class ItemViewModel : INotifyPropertyChanged
+    public class TimelineViewModel : INotifyPropertyChanged
     {
-        private string _lineOne;
-        /// <summary>
-        /// 示例 ViewModel 属性；此属性在视图中用于使用绑定显示它的值。
-        /// </summary>
-        /// <returns></returns>
-        public string LineOne
+        private string _showTitle;
+        public string showTitle
         {
             get
             {
-                return _lineOne;
+                return _showTitle;
             }
             set
             {
-                if (value != _lineOne)
+                if (value != _showTitle)
                 {
-                    _lineOne = value;
-                    NotifyPropertyChanged("LineOne");
+                    _showTitle = value;
+                    NotifyPropertyChanged("showTitle");
                 }
             }
         }
 
-        private string _lineTwo;
-        /// <summary>
-        /// 示例 ViewModel 属性；此属性在视图中用于使用绑定显示它的值。
-        /// </summary>
-        /// <returns></returns>
-        public string LineTwo
+        private string _showContent;
+        public string showContent
         {
             get
             {
-                return _lineTwo;
+                return _showContent;
             }
             set
             {
-                if (value != _lineTwo)
+                if (value != _showContent)
                 {
-                    _lineTwo = value;
-                    NotifyPropertyChanged("LineTwo");
+                    _showContent = value;
+                    NotifyPropertyChanged("showTitle");
                 }
             }
         }
 
-        private string _lineThree;
-        /// <summary>
-        /// 示例 ViewModel 属性；此属性在视图中用于使用绑定显示它的值。
-        /// </summary>
-        /// <returns></returns>
-        public string LineThree
+        private string _showName;
+        public string showName
         {
             get
             {
-                return _lineThree;
+                return _showName;
             }
             set
             {
-                if (value != _lineThree)
+                if (value != _showName)
                 {
-                    _lineThree = value;
-                    NotifyPropertyChanged("LineThree");
+                    _showName = value;
+                    NotifyPropertyChanged("showName");
                 }
             }
         }
+
+        private System.Windows.Visibility _visibility;
+        public System.Windows.Visibility visibility
+        {
+            get
+            {
+                return _visibility;
+            }
+            set
+            {
+                if (value != _visibility)
+                {
+                    _visibility = value;
+                    NotifyPropertyChanged("visibility");
+                }
+            }
+        }
+
+        private string _showVoteupCount;
+        public string showVoteupCount
+        {
+            get
+            {
+                return _showVoteupCount;
+            }
+            set
+            {
+                if (value != _showVoteupCount)
+                {
+                    _showVoteupCount = value;
+                    NotifyPropertyChanged("showVoteupCount");
+                }
+            }
+        }
+
+        public ZHMFeed feed = new ZHMFeed();
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
@@ -85,4 +110,5 @@ namespace Zhihu.ViewModels
             }
         }
     }
+
 }

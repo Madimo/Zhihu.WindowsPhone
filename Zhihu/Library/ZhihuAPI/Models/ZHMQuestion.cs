@@ -2,7 +2,7 @@
 
 namespace Zhihu.Library.ZhihuAPI.Models
 {
-    class ZHMQuestion
+    public class ZHMQuestion
     {
         public string url;
         public string type;

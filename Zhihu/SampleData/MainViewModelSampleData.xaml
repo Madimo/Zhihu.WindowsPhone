@@ -1,16 +1,13 @@
 ﻿<vm:MainViewModel
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:vm="clr-namespace:Zhihu.ViewModels"
-    SampleProperty="示例文本属性值">
-
-    <vm:MainViewModel.Items>
-        <vm:ItemViewModel LineOne="设计一" LineTwo="Maecenas praesent accumsan bibendum" LineThree="Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur"/>
-        <vm:ItemViewModel LineOne="设计二" LineTwo="Dictumst eleifend facilisi faucibus" LineThree="Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent"/>
-        <vm:ItemViewModel LineOne="设计三" LineTwo="Habitant inceptos interdum lobortis" LineThree="Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat"/>
-        <vm:ItemViewModel LineOne="设计四" LineTwo="Nascetur pharetra placerat pulvinar" LineThree="Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum"/>
-        <vm:ItemViewModel LineOne="设计五" LineTwo="Sagittis senectus sociosqu suscipit" LineThree="Dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis"/>
-        <vm:ItemViewModel LineOne="设计六" LineTwo="Torquent ultrices vehicula volutpat" LineThree="Senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend"/>
-    </vm:MainViewModel.Items>
+    xmlns:vm="clr-namespace:Zhihu.ViewModels">
+    
+    <vm:MainViewModel.timeline>
+        <vm:TimelineViewModel showName="王子亭 赞同该回答" showTitle="为什么《爱情公寓》这种由编剧抄袭《老友记》、《生活大爆炸》和《..." showContent="抄袭和抄袭本身就有着本质上的区别，比如说吧，郭德纲和周立波，都是会从网络上摘抄笑话的，一方面可以叫做与时俱进，..." visibility="Visible" showVoteupCount="1024"/>
+        <vm:TimelineViewModel showName="王子亭 赞了 Archives 中的一篇文章" showTitle="# 我的鼠鬚管自定义" showContent="昨晚因为突然想试试 @polyhedron 的中古汉语全拼于是终于上手尝试口碑极佳的鼠须管，一头雾水地折腾到凌晨五..." visibility="Visible" showVoteupCount="102"/>
+        <vm:TimelineViewModel showName="Ricter Zheng 关注了该问题" showTitle="怎样搭讪同院的护士？" showContent="" visibility="Collapsed" showVoteupCount="0"/>
+        <vm:TimelineViewModel showName="王子亭 赞同该回答" showTitle="有个朋友手机丢了，捡到手机的那家伙居然把自己的联系人数据传到了..." showContent="所谓与手机绑定，也是绑定号码而不是手机本身吧？ 都找到这么专业又冷门的地方来提问了，却解决不掉修改个密..." visibility="Visible" showVoteupCount="10240"/>
+    </vm:MainViewModel.timeline>
 
 </vm:MainViewModel>
