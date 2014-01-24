@@ -93,10 +93,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Library\ZhihuAPI\Models\ZHMAnswer.cs" />
     <Compile Include="Library\ZhihuAPI\Models\ZHMAuthor.cs" />
     <Compile Include="Library\ZhihuAPI\Models\ZHMFeed.cs" />
     <Compile Include="Library\ZhihuAPI\Models\ZHMQuestion.cs" />
     <Compile Include="Library\ZhihuAPI\Models\ZHMTarget.cs" />
+    <Compile Include="Library\ZhihuAPI\ZHHotAnswers.cs" />
     <Compile Include="Library\ZhihuAPI\ZHTimeline.cs" />
     <Compile Include="Library\ZhihuAPI\ZHAccount.cs" />
     <Compile Include="Library\ZhihuAPI\ZhihuAPI.cs" />
