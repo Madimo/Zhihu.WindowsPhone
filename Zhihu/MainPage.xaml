@@ -14,6 +14,7 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True"
     shell:SystemTray.Opacity="0"
+    Style="{StaticResource TransitionPageStyle}"
     Loaded="PhoneApplicationPage_Loaded">
 
     <Grid x:Name="LayoutRoot">
@@ -43,7 +44,10 @@
                         </phone:LongListSelector.ItemTemplate>
                         <phone:LongListSelector.ListFooter>
                             <StackPanel>
-                                <ProgressBar Name="TimelineProgressBar" Opacity="0.5" Foreground="#FF0037FF" IsIndeterminate="True" Visibility="Collapsed"/>
+                                <StackPanel Name="TimelineProgressBar" Visibility="Collapsed">
+                                    <TextBlock Margin="10,0,0,10" Text="加载中..." TextAlignment="Center"/>
+                                    <ProgressBar Opacity="0.5" Foreground="#FF0037FF" IsIndeterminate="True"/>
+                                </StackPanel>
                                 <StackPanel Height="100"/>
                             </StackPanel>
                         </phone:LongListSelector.ListFooter>
@@ -73,7 +77,10 @@
                         </phone:LongListSelector.ItemTemplate>
                         <phone:LongListSelector.ListFooter>
                             <StackPanel>
-                                <ProgressBar Name="HotAnswersProgressBar" Opacity="0.5" Foreground="#FF0037FF" IsIndeterminate="True" Visibility="Collapsed"/>
+                                <StackPanel Name="HotAnswersProgressBar" Visibility="Collapsed">
+                                    <TextBlock Margin="10,0,0,10" Text="加载中..." TextAlignment="Center"/>
+                                    <ProgressBar Opacity="0.5" Foreground="#FF0037FF" IsIndeterminate="True"/>
+                                </StackPanel>
                                 <StackPanel Height="100"/>
                             </StackPanel>
                         </phone:LongListSelector.ListFooter>
@@ -85,7 +92,7 @@
 
     <phone:PhoneApplicationPage.Resources>
         <shell:ApplicationBar x:Key="AppBar0" Opacity="0.5" BackgroundColor="#FF0097FF">
-            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.refresh.png" Text="刷新"/>
+            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.refresh.png" Text="刷新" Click="RefreshTimeline_Click"/>
             <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.edit.png" Text="提问"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="设置"/>
@@ -94,7 +101,7 @@
 
         <shell:ApplicationBar x:Key="AppBar1" Opacity="0.5" BackgroundColor="#FF0097FF">
             <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.shuffle.png" Text="随便看看"/>
-            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.refresh.png" Text="刷新"/>
+            <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.refresh.png" Text="刷新" Click="RefreshHotAnswers_Click"/>
             <shell:ApplicationBarIconButton IconUri="Toolkit.Content/appbar.search.png" Text="搜索"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="设置"/>

@@ -13,13 +13,14 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="False"
     shell:SystemTray.Opacity="0"
+    Style="{StaticResource TransitionPageStyle}"
     Loaded="PhoneApplicationPage_Loaded">
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="173*"/>
-            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/ZHBackground.png" Stretch="UniformToFill"/>
@@ -29,7 +30,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Name="TopCover" Opacity="0" Canvas.ZIndex="100" Grid.RowSpan="2" Margin="0,0,0,0" Visibility="Collapsed" Grid.ColumnSpan="2">
+        <Grid Name="TopCover" Opacity="0" Canvas.ZIndex="100" Grid.RowSpan="2" Margin="0,0,0,0" Visibility="Collapsed">
             <Grid.Background>
                 <SolidColorBrush Color="Black"/>
             </Grid.Background>
@@ -37,7 +38,7 @@
         </Grid>
 
         <!--ContentPanel - 在此处放置其他内容-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="2">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0">
             <Image Name="Logo" Source="/Images/ZHStartPageLogo.png" Margin="111,315,111,333"/>
             <Button Name="Login" Content="登陆" Opacity="0" Visibility="Collapsed" Click="Login_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,243,0,0" Width="436" Style="{StaticResource ZHButtonStyle}"/>
             <Button Name="Register" Content="注册" Opacity="0" Visibility="Collapsed" Click="Register_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,320,0,0" Width="436" Style="{StaticResource ZHButtonStyle}"/>

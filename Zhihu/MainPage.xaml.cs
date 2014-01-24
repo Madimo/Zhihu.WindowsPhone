@@ -61,11 +61,11 @@ namespace Zhihu
 
                 if ((bool)isLoadFirstPage)
                 {
-                    await timeline.GetFirstPage();
                     this.Dispatcher.BeginInvoke(delegate()
                     {
                         App.ViewModel.timeline.Clear();
                     });
+                    await timeline.GetFirstPage();
                 }
                 else
                 {
@@ -148,11 +148,11 @@ namespace Zhihu
 
                 if ((bool)isLoadFirstPage)
                 {
-                    await hotAnswers.GetFirstPage();
                     this.Dispatcher.BeginInvoke(delegate()
                     {
                         App.ViewModel.hotAnswers.Clear();
                     });
+                    await hotAnswers.GetFirstPage();
                 }
                 else
                 {
@@ -207,5 +207,25 @@ namespace Zhihu
                     break;
             }
         }
+
+        #region 菜单事件处理
+        private void RefreshTimeline_Click(object sender, EventArgs e)
+        {
+            if (!isLoadingTimeline)
+            {
+                Thread thread = new Thread(LoadTimeline);
+                thread.Start(true);
+            }
+        }
+
+        private void RefreshHotAnswers_Click(object sender, EventArgs e)
+        {
+            if (!isLoadingHotAnswers)
+            {
+                Thread thread = new Thread(LoadHotAnswers);
+                thread.Start(true);
+            }
+        }
+        #endregion
     }
 }
